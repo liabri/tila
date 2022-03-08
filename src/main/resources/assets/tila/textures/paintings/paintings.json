@@ -1,0 +1,13 @@
+[
+  {
+    "name" : "painting_un",
+    "x" : 64,
+    "y" : 16
+  },
+
+  {
+    "name" : "painting_deux",
+    "x" : 32,
+    "y" : 64
+  }
+]

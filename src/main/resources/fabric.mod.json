@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "tila",
+  "version": "${version}",
+
+  "name": "Tila",
+  "description": "Paintings.",
+  "authors": [
+    "liabri"
+  ],
+
+  "license": "CC0-1.0",
+  "icon": "assets/tila/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "org.liabri.tila.Tila"
+    ]
+  },
+
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "java": ">=17"
+  }
+}
