@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "tila:block/easel",
+      "y": 90
+    },
+
+    "facing=north": {
+      "model": "tila:block/easel"
+    },
+
+    "facing=south": {
+      "model": "tila:block/easel",
+      "y": 180
+    },
+
+    "facing=west": {
+      "model": "tila:block/easel",
+      "y": 270
+    }
+  }
+}
