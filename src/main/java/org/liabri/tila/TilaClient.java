@@ -7,7 +7,6 @@ import org.liabri.tila.screens.Screens;
 
 @Environment(EnvType.CLIENT)
 public class TilaClient implements ClientModInitializer {
-
     @Override
     public void onInitializeClient() {
         Screens.init();

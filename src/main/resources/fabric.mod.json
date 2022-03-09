@@ -26,5 +26,5 @@
     "java": ">=17"
   },
 
-  "accessWidener": "tila.access-widener"
+  "accessWidener": "tila.accesswidener"
 }

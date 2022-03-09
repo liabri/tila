@@ -39,7 +39,7 @@ public class EaselBlock extends BlockWithEntity {
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new FurnaceBlockEntity(pos, state);
+        return new EaselBlockEntity(pos, state);
     }
 
     @Override

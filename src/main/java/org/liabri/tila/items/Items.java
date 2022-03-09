@@ -9,7 +9,6 @@ import net.minecraft.util.registry.Registry;
 import org.liabri.tila.Tila;
 
 public class Items {
-
     public static void init() {}
 
     public static Item register(String path, Item item) {
