@@ -1,4 +1,12 @@
 {
   "itemGroup.tila.painting": "Painting",
-  "block.tila.easel": "Easel"
+  "container.tila.easel": "Easel",
+  "block.tila.easel": "Easel",
+  "item.tila.tiny_square_canvas": "Tiny Square Canvas",
+  "item.tila.small_square_canvas": "Small Square Canvas",
+  "item.tila.medium_square_canvas": "Medium Square Canvas",
+  "item.tila.large_square_canvas": "Large Square Canvas",
+  "item.tila.tiny_rectangular_canvas": "Tiny Rectangular Canvas",
+  "item.tila.small_rectangular_canvas": "Small Rectangular Canvas",
+  "item.tila.medium_rectangular_canvas": "Medium Rectangular Canvas"
 }

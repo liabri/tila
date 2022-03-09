@@ -17,7 +17,7 @@ import org.liabri.tila.recipes.EaselRecipe;
 import java.util.List;
 
 public class EaselScreenHandler extends ScreenHandler {
-    private final Inventory controllerInventory;
+    private final Inventory canvasses;
     private final PropertyDelegate propertyDelegate;
 
     private final Property selectedRecipe;
@@ -26,7 +26,7 @@ public class EaselScreenHandler extends ScreenHandler {
     final Slot outputSlot;
 
     public EaselScreenHandler(int syncId, PlayerInventory inventory) {
-        this(syncId, inventory, new SimpleInventory(4), new ArrayPropertyDelegate(2));
+        this(syncId, inventory, new SimpleInventory(1), new ArrayPropertyDelegate(2));
     }
 
     public EaselScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, PropertyDelegate propertyDelegate) {
@@ -35,41 +35,32 @@ public class EaselScreenHandler extends ScreenHandler {
         this.selectedRecipe = Property.create();
         this.availableRecipes = Lists.newArrayList();
         this.output = new CraftingResultInventory();
-
-        this.controllerInventory = inventory;
+        this.canvasses = inventory;
         this.propertyDelegate = propertyDelegate;
         this.addProperties(propertyDelegate);
+        this.addProperty(this.selectedRecipe);
 
-        int m, l;
+        // canvasses slot
+        this.addSlot(new Slot(canvasses, 0, 20, 33));
 
-        //Canvasses slot
-        this.addSlot(new Slot(controllerInventory, 0, 30, 30));
-
-        //Recipe Output
+        // painting output slot
         this.outputSlot = this.addSlot(new Slot(this.output, 1, 143, 33) {
             @Override public boolean canInsert(ItemStack stack) { return false; }
         });
 
         this.addSlot(this.outputSlot);
 
-
-        //Recipe Inputs
-//        for (m = 0; m < 2; m++) {
-//            for (l = 0; l < 5; l++) {
-//                this.addSlot(new Slot(controllerInventory, l + m * 5, 44 + l * 18, 27 + m * 18));
-//            }
-//        }
-
-        //Player inventory
-        for (m = 0; m < 3; ++m) {
-            for (l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + m * 9 + 9, 8 + l * 18, 91 + m * 18));
+        int i;
+        // player inventory slots
+        for(i = 0; i < 3; ++i) {
+            for(int j = 0; j < 9; ++j) {
+                this.addSlot(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
         }
 
-        //Player Hotbar
-        for (m = 0; m < 9; ++m) {
-            this.addSlot(new Slot(playerInventory, m, 8 + m * 18, 149));
+        // player hotbar slots
+        for(i = 0; i < 9; ++i) {
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
     }
 
@@ -81,7 +72,7 @@ public class EaselScreenHandler extends ScreenHandler {
         if (!this.availableRecipes.isEmpty() && this.isInBounds(this.selectedRecipe.get())) {
             EaselRecipe easelRecipe = (EaselRecipe)this.availableRecipes.get(this.selectedRecipe.get());
             this.output.setLastRecipe(easelRecipe);
-            this.outputSlot.setStack(easelRecipe.craft(this.controllerInventory));
+//            this.outputSlot.setStack(easelRecipe.craft(this.canvasses)); //TODO
         } else {
             this.outputSlot.setStack(ItemStack.EMPTY);
         }
@@ -91,6 +82,6 @@ public class EaselScreenHandler extends ScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return this.controllerInventory.canPlayerUse(player);
+        return this.canvasses.canPlayerUse(player);
     }
 }
