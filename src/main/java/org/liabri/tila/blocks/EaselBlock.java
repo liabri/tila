@@ -19,7 +19,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.liabri.tila.Tila;
 import org.liabri.tila.blockentities.EaselBlockEntity;
 
 import javax.annotation.Nullable;

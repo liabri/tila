@@ -9,6 +9,5 @@ public class Renderers {
 
     static {
         BlockRenderLayerMap.INSTANCE.putBlock(Blocks.EASEL.getLeft(), RenderLayer.getCutout());
-
     }
 }
