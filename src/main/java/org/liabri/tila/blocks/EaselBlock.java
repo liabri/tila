@@ -62,5 +62,4 @@ public class EaselBlock extends BlockWithEntity {
 
         return ActionResult.SUCCESS;
     }
-
 }
