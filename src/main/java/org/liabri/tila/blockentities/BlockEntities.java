@@ -2,9 +2,6 @@ package org.liabri.tila.blockentities;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.decoration.painting.PaintingEntity;
-import net.minecraft.inventory.Inventories;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.registry.Registry;
 import org.liabri.tila.blocks.Blocks;
 

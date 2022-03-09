@@ -1,4 +1,13 @@
 [
-  "painting_un",
-  "painting_deux"
+  {
+    "name": "malaka",
+    "x": 16,
+    "y": 16
+  },
+
+  {
+    "name": "parto",
+    "x": 16,
+    "y": 32
+  }
 ]

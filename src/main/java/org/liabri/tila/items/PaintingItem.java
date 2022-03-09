@@ -1,11 +1,7 @@
 package org.liabri.tila.items;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.decoration.AbstractDecorationEntity;
-import net.minecraft.entity.decoration.GlowItemFrameEntity;
-import net.minecraft.entity.decoration.ItemFrameEntity;
 import net.minecraft.entity.decoration.painting.PaintingEntity;
 import net.minecraft.entity.decoration.painting.PaintingMotive;
 import net.minecraft.entity.player.PlayerEntity;
@@ -23,15 +19,23 @@ import net.minecraft.world.event.GameEvent;
 import static org.liabri.tila.Tila.PAINTING_ITEM_GROUP;
 
 public class PaintingItem extends Item {
-    public PaintingMotive motive;
+    private final String refName;
+    private final int width;
+    private final int height;
 
-    public PaintingItem(String name) {
+    public String getRefName() {
+        return this.refName;
+    }
+
+    public PaintingItem(String name, int width, int height) {
         super(new FabricItemSettings().group(PAINTING_ITEM_GROUP));
-        this.motive = register(name, 16, 16);
+        this.refName = name;
+        this.width = width;
+        this.height = height;
     }
 
     private static PaintingMotive register(String name, int width, int height) {
-        return (PaintingMotive) Registry.register(Registry.PAINTING_MOTIVE, name, new PaintingMotive(width, height));
+        return Registry.register(Registry.PAINTING_MOTIVE, name, new PaintingMotive(width, height));
     }
 
     protected boolean canPlaceOn(PlayerEntity player, Direction side, ItemStack stack, BlockPos pos) {
@@ -50,7 +54,8 @@ public class PaintingItem extends Item {
             return ActionResult.FAIL;
         } else {
             World world = context.getWorld();
-            PaintingEntity paintingEntity = new PaintingEntity(world, blockPos2, direction, this.motive);
+            PaintingMotive paintingMotive = register(this.refName, this.width, this.height);
+            PaintingEntity paintingEntity = new PaintingEntity(world, blockPos2, direction, paintingMotive);
             NbtCompound nbtCompound = itemStack.getNbt();
 
             if (nbtCompound != null) {
@@ -71,5 +76,4 @@ public class PaintingItem extends Item {
             }
         }
     }
-
 }

@@ -33,6 +33,12 @@ public class Items {
     public static final Item SMALL_RECTANGULAR_CANVAS = register("small_rectangular_canvas", new CanvasItem("2x3"));
     public static final Item MEDIUM_RECTANGULAR_CANVAS = register("medium_rectangular_canvas", new CanvasItem("3x4"));
 
+    public static final Item MALAKA_PAINTING = register("malaka_painting", new PaintingItem("malaka", 16, 16));
 
-    public static final Item MALAKA_PAINTING = register("malaka_painting", new PaintingItem("malake"));
+//    static {
+//        for (PaintingItem paintingItem : paintingItems) {
+//            register(paintingItem.getRefName() + "_painting", paintingItem);
+//        }
+//    }
+
 }

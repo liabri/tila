@@ -14,8 +14,6 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import org.liabri.tila.blocks.EaselBlock;
 import org.liabri.tila.screenhandlers.EaselScreenHandler;
 
 import javax.annotation.Nullable;
