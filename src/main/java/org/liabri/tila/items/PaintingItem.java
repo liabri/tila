@@ -23,6 +23,8 @@ public class PaintingItem extends Item {
     private final int width;
     private final int height;
 
+    private PaintingMotive paintingMotive;
+
     public String getRefName() {
         return this.refName;
     }
@@ -32,7 +34,12 @@ public class PaintingItem extends Item {
         this.refName = name;
         this.width = width;
         this.height = height;
+        this.paintingMotive = register(this.refName, this.width, this.height);
     }
+
+//    public void register() {
+//        this.paintingMotive = Registry.register(Registry.PAINTING_MOTIVE, this.refName, new PaintingMotive(this.width, this.height));
+//    }
 
     private static PaintingMotive register(String name, int width, int height) {
         return Registry.register(Registry.PAINTING_MOTIVE, name, new PaintingMotive(width, height));
@@ -54,8 +61,7 @@ public class PaintingItem extends Item {
             return ActionResult.FAIL;
         } else {
             World world = context.getWorld();
-            PaintingMotive paintingMotive = register(this.refName, this.width, this.height);
-            PaintingEntity paintingEntity = new PaintingEntity(world, blockPos2, direction, paintingMotive);
+            PaintingEntity paintingEntity = new PaintingEntity(world, blockPos2, direction, this.paintingMotive);
             NbtCompound nbtCompound = itemStack.getNbt();
 
             if (nbtCompound != null) {
