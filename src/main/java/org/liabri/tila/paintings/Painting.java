@@ -1,4 +1,4 @@
-package org.liabri.tila;
+package org.liabri.tila.paintings;
 
 public class Painting {
     private final String refName;

@@ -1,0 +1,5 @@
+{
+  "type": "tila:painting",
+  "canvas": "tila:medium_square_canvas",
+  "output": "tila:malaka"
+}

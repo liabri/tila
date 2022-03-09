@@ -4,13 +4,18 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import org.liabri.tila.blocks.EaselBlock;
 import org.liabri.tila.screenhandlers.EaselScreenHandler;
 
 import javax.annotation.Nullable;
@@ -25,7 +30,7 @@ public class EaselBlockEntity extends BlockEntity implements EaselImplementedInv
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-        return new EaselScreenHandler(syncId, inv);
+        return new EaselScreenHandler(syncId, inv, this, new ArrayPropertyDelegate(2));
     }
 
     @Override
@@ -36,6 +41,17 @@ public class EaselBlockEntity extends BlockEntity implements EaselImplementedInv
     @Override
     public DefaultedList<ItemStack> getItems() {
         return ITEMS;
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        Inventories.readNbt(nbt, ITEMS);
+    }
+
+    @Override
+    public void writeNbt(NbtCompound nbt) {
+        Inventories.writeNbt(nbt, ITEMS);
+        super.writeNbt(nbt);
     }
 
 //    public static class Type extends BlockEntityType<EaselBlockEntity> {

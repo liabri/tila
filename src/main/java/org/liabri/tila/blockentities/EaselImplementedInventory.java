@@ -19,12 +19,12 @@ interface EaselImplementedInventory extends Inventory {
 
     @Override
     default int size() {
-        return 1;
+        return getItems().size();
     }
 
     @Override
     default boolean isEmpty() {
-        return getStack(0).isEmpty();
+        return getItems().isEmpty();
     }
 
     @Override
