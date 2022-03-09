@@ -12,7 +12,7 @@ import org.liabri.tila.screenhandlers.EaselScreenHandler;
 
 @Environment(EnvType.CLIENT)
 public class EaselScreen extends HandledScreen<EaselScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier("textures/gui/container/smoker.png");
+    private static final Identifier TEXTURE = new Identifier("textures/gui/container/stonecutter.png");
 
     public EaselScreen(EaselScreenHandler container, PlayerInventory inventory, Text title) {
         super(container, inventory, title);
@@ -26,11 +26,9 @@ public class EaselScreen extends HandledScreen<EaselScreenHandler> {
         int y = (height - backgroundHeight) / 2;
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
 
-        for (int i = 2; i < 12; i++) {
-            final var slot = handler.slots.get(i);
-            if (!slot.hasStack()) continue;
-            drawTexture(matrices, x + slot.x - 1, y + slot.y - 1, 208, 0, 18, 18);
-        }
+//        final var slot = handler.slots.get(0);
+//        if (!slot.hasStack()) return;
+//        drawTexture(matrices, x + slot.x - 1, y + slot.y - 1, 208, 0, 18, 18);
     }
 
     @Override

@@ -12,7 +12,6 @@ public class TilaClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         Screens.init();
-        ScreenHandlers.init();
         Renderers.init();
     }
 }

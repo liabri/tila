@@ -4,19 +4,23 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import org.liabri.tila.screenhandlers.EaselScreenHandler;
 
 import javax.annotation.Nullable;
 
-public class EaselBlockEntity extends BlockEntity implements NamedScreenHandlerFactory {
+public class EaselBlockEntity extends BlockEntity implements EaselImplementedInventory, NamedScreenHandlerFactory {
     public EaselBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntities.EASEL_BLOCK_ENTITY, pos, state);
     }
+
+    private final DefaultedList<ItemStack> ITEMS = DefaultedList.ofSize(1, ItemStack.EMPTY);
 
     @Nullable
     @Override
@@ -27,6 +31,11 @@ public class EaselBlockEntity extends BlockEntity implements NamedScreenHandlerF
     @Override
     public Text getDisplayName() {
         return new TranslatableText("container.tila.easel");
+    }
+
+    @Override
+    public DefaultedList<ItemStack> getItems() {
+        return ITEMS;
     }
 
 //    public static class Type extends BlockEntityType<EaselBlockEntity> {
